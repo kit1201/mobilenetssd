@@ -149,7 +149,16 @@ def event_handle(event):
 
     if msgType == "text":
         msg = str(event["message"]["text"])
-        replyObj = TextSendMessage(text=msg)
+        if msg == "สวัสดี" : 
+            replyObj = TextSendMessage(text="หวัดดีคั้บ")
+        elif msg == "ต้นกัญชาราคาเท่าไหร่" : 
+            replyObj = TextSendMessage(text="350 บาท ตามราคาตลาดคั้บ รับต้นนี้มั้ยครับ?")
+        elif msg == "เอา" :
+             replyObj = TextSendMessage(text="ได้ครับกำลังจัดส่ง")
+        elif msg == "ไม่เอา" :
+            replyObj = TextSendMessage(text="ขอบคุณที่ใช้บริการครับ")
+        else :
+            replyObj = TextSendMessage(text=msg)
         line_bot_api.reply_message(rtoken, replyObj)
     elif msgType == "image":
         try:
